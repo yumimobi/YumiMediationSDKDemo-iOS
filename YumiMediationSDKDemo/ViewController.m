@@ -15,7 +15,7 @@
 #import <YumiMediationSDK/AdsYuMIDeviceInfo.h>
 
 #import "YUMIStatisticTableViewController.h"
-#import "YuMIDebugCenter.h"
+#import <YumiMediationDebugCenter-iOS/YuMIDebugCenter.h>
 #import <YumiMediationSDK/AdsYUMILogCenter.h>
 
 #define YUMIBANNER_ID         @"3f521f0914fdf691bd23bf85a8fd3c3a"

@@ -56,6 +56,7 @@
 		630F73E11EAD9E9400A74098 /* YUMIStatisticTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUMIStatisticTableViewController.h; sourceTree = "<group>"; };
 		630F73E21EAD9E9400A74098 /* YUMIStatisticTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUMIStatisticTableViewController.m; sourceTree = "<group>"; };
 		630F73E31EAD9E9400A74098 /* YUMIStatisticTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YUMIStatisticTableViewController.xib; sourceTree = "<group>"; };
+		63E097EF1EB0B7850083A6E1 /* AdsYUMILogCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdsYUMILogCenter.h; sourceTree = "<group>"; };
 		7414EC105309956644DC2D55 /* Pods-YumiMediationSDKDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumiMediationSDKDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumiMediationSDKDemoUITests/Pods-YumiMediationSDKDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		99B4CDF1528922A11091F816 /* libPods-YumiMediationSDKDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumiMediationSDKDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCE056284C70FFC5C262393 /* Pods-YumiMediationSDKDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumiMediationSDKDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumiMediationSDKDemoTests/Pods-YumiMediationSDKDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +125,14 @@
 			path = YUMIStaticView;
 			sourceTree = "<group>";
 		};
+		63E097EC1EB0B7850083A6E1 /* PrivateHeader */ = {
+			isa = PBXGroup;
+			children = (
+				63E097EF1EB0B7850083A6E1 /* AdsYUMILogCenter.h */,
+			);
+			path = PrivateHeader;
+			sourceTree = "<group>";
+		};
 		B9A0656B1E8D0F6C00B1B91B = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +158,7 @@
 		B9A065761E8D0F6C00B1B91B /* YumiMediationSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				63E097EC1EB0B7850083A6E1 /* PrivateHeader */,
 				630F73DA1EAD9E9400A74098 /* YUMIStaticView */,
 				B9A0657A1E8D0F6C00B1B91B /* AppDelegate.h */,
 				B9A0657B1E8D0F6C00B1B91B /* AppDelegate.m */,

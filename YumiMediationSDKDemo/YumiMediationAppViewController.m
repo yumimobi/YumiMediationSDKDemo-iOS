@@ -12,6 +12,21 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *yumiMediationButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *requestAdButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *removeBannerButton;
+@property (weak, nonatomic) IBOutlet UIButton *showAdButton;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *selectAdType;
+
+@property (weak, nonatomic) IBOutlet UITextView *showLogConsole;
+
+@property (weak, nonatomic) IBOutlet UIButton *clearLogButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *showLogAtBottomButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *showLogTopButton;
+
 @end
 
 @implementation YumiMediationAppViewController
@@ -24,10 +39,6 @@
     self.yumiMediationButton.layer.borderColor  = [UIColor whiteColor].CGColor;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)clickMetation:(UIButton *)sender {
     
 }

@@ -12,6 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YumiMediationAppViewController">
             <connections>
+                <outlet property="clearLogButton" destination="Nol-aU-AHe" id="Zfg-rX-By5"/>
+                <outlet property="removeBannerButton" destination="kLu-4I-Vh9" id="O27-Yw-r6C"/>
+                <outlet property="requestAdButton" destination="xCB-Ge-5UR" id="uSA-wr-8gX"/>
+                <outlet property="selectAdType" destination="iJ3-dq-9tc" id="AyN-2S-PxD"/>
+                <outlet property="showAdButton" destination="o1b-gO-A5f" id="kEh-19-bXk"/>
+                <outlet property="showLogAtBottomButton" destination="6vN-kx-Me6" id="xUd-rU-YXk"/>
+                <outlet property="showLogConsole" destination="zbG-cg-jV4" id="Bki-9u-LNf"/>
+                <outlet property="showLogTopButton" destination="9ny-uk-SQC" id="BGf-SB-BbF"/>
                 <outlet property="view" destination="mMx-BE-UUi" id="h65-b3-QpF"/>
                 <outlet property="yumiMediationButton" destination="R2g-Lb-btE" id="anR-Cn-KhQ"/>
             </connections>
@@ -161,32 +169,18 @@
                             <rect key="frame" x="86" y="5" width="66" height="30"/>
                             <state key="normal" title="Top"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jj-EP-ASJ">
-                            <rect key="frame" x="0.0" y="83.5" width="320" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Y9h-lt-B0K"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="Nol-aU-AHe" firstAttribute="top" secondItem="piD-wC-XbG" secondAttribute="top" constant="5" id="1ww-sg-D5i"/>
-                        <constraint firstItem="7jj-EP-ASJ" firstAttribute="centerX" secondItem="piD-wC-XbG" secondAttribute="centerX" id="3GS-9k-kak"/>
                         <constraint firstItem="6vN-kx-Me6" firstAttribute="width" secondItem="Nol-aU-AHe" secondAttribute="width" id="C90-aC-zme"/>
                         <constraint firstItem="6vN-kx-Me6" firstAttribute="height" secondItem="Nol-aU-AHe" secondAttribute="height" id="HOd-gt-DmL"/>
                         <constraint firstItem="9ny-uk-SQC" firstAttribute="width" secondItem="6vN-kx-Me6" secondAttribute="width" id="Mrs-Lg-Xvb"/>
-                        <constraint firstItem="7jj-EP-ASJ" firstAttribute="leading" secondItem="piD-wC-XbG" secondAttribute="leading" id="NFc-Gt-s91"/>
                         <constraint firstItem="6vN-kx-Me6" firstAttribute="leading" secondItem="9ny-uk-SQC" secondAttribute="trailing" constant="12" id="Pfa-cN-Utm"/>
                         <constraint firstItem="6vN-kx-Me6" firstAttribute="centerY" secondItem="Nol-aU-AHe" secondAttribute="centerY" id="Rho-Ss-o8w"/>
                         <constraint firstAttribute="trailing" secondItem="Nol-aU-AHe" secondAttribute="trailing" constant="12" id="eyI-tv-0IP"/>
                         <constraint firstItem="9ny-uk-SQC" firstAttribute="height" secondItem="6vN-kx-Me6" secondAttribute="height" id="k9q-xh-1Hs"/>
                         <constraint firstItem="9ny-uk-SQC" firstAttribute="centerY" secondItem="6vN-kx-Me6" secondAttribute="centerY" id="mp9-47-QtJ"/>
-                        <constraint firstAttribute="bottom" secondItem="7jj-EP-ASJ" secondAttribute="bottom" id="ooL-yu-tfl"/>
-                        <constraint firstAttribute="trailing" secondItem="7jj-EP-ASJ" secondAttribute="trailing" id="pa1-BS-ALk"/>
                         <constraint firstItem="Nol-aU-AHe" firstAttribute="leading" secondItem="6vN-kx-Me6" secondAttribute="trailing" constant="12" id="v1k-28-4lt"/>
                     </constraints>
                 </view>

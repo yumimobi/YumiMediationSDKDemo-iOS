@@ -10,7 +10,7 @@
 #import <YumiMediationSDK/YumiAdsSplash.h>
 #import "YumiTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import "YumiMobiAppViewController.h"
+#import "YumiMediationAppViewController.h"
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
@@ -44,8 +44,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     [self.yumiSplash showYumiAdsSplashWith:yumiID rootViewController:navigationController delegate:self];
 */
     
-    
-    YumiMobiAppViewController *rootVc = [[YumiMobiAppViewController alloc] init];
+    YumiMediationAppViewController *rootVc = [[YumiMediationAppViewController alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     self.window.rootViewController = rootVc;
     [self.window makeKeyWindow];

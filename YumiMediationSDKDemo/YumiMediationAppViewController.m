@@ -33,6 +33,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 @property (weak, nonatomic) IBOutlet UIButton *clearLogButton;
 @property (weak, nonatomic) IBOutlet UIButton *showLogAtBottomButton;
 @property (weak, nonatomic) IBOutlet UIButton *showLogTopButton;
+@property (weak, nonatomic) IBOutlet UISwitch *switchIsSmartSize;
+@property (weak, nonatomic) IBOutlet UILabel *smartLabel;
 
 @property (nonatomic) YumiMediationBannerView  *bannerView;
 @property (nonatomic) YumiMediationInterstitial *interstitial;
@@ -158,8 +160,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     
     switch (self.selectAdType.selectedSegmentIndex) {
         case 0:
-            [self showLogConsoleWith:[NSString stringWithFormat:@"initialize   banner ad yumiID : %@",yumiID] adLogType:YumiMediationAdLogTypeBanner];
-            [self.bannerView loadAd];
+           
+            [self.bannerView loadAd:self.switchIsSmartSize.on];
             [self showLogConsoleWith:@"start request banner ad" adLogType:YumiMediationAdLogTypeBanner];
             [self.view addSubview:self.bannerView];
             [self.view bringSubviewToFront:self.bannerView];
@@ -224,6 +226,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.presentOrCloseAdButton setTitle:@"Remove banner" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = YES;
             self.presentOrCloseAdButton.hidden = NO;
+            self.smartLabel.hidden = NO;
+            self.switchIsSmartSize.hidden = NO;
             self.adType = YumiMediationAdLogTypeBanner;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.bannerAdLog;
@@ -236,6 +240,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.presentOrCloseAdButton setTitle:@"Show interstitial" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = YES;
             self.presentOrCloseAdButton.hidden = NO;
+            self.smartLabel.hidden = YES;
+            self.switchIsSmartSize.hidden = YES;
             self.adType = YumiMediationAdLogTypeInterstitial;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.interstitialAdLog;
@@ -249,6 +255,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.presentOrCloseAdButton setTitle:@"Play video" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = NO;
             self.presentOrCloseAdButton.hidden = NO;
+            self.smartLabel.hidden = YES;
+            self.switchIsSmartSize.hidden = YES;
             self.adType = YumiMediationAdLogTypeVideo;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.videoAdLog;
@@ -261,6 +269,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.requestAdButton setTitle:@"Request splash" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = YES;
             self.presentOrCloseAdButton.hidden = YES;
+            self.smartLabel.hidden = YES;
+            self.switchIsSmartSize.hidden = YES;
             self.adType = YumiMediationAdLogTypeSplash;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.splashAdLog;
@@ -313,6 +323,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     if (!_bannerView) {
         _bannerView = [[YumiMediationBannerView alloc] initWithYumiID:yumiID channelID:@"" versionID:@"" position:YumiMediationBannerPositionBottom rootViewController:self];
         _bannerView.delegate = self;
+         [self showLogConsoleWith:[NSString stringWithFormat:@"initialize   banner ad yumiID : %@",yumiID] adLogType:YumiMediationAdLogTypeBanner];
     }
     return _bannerView;
 }

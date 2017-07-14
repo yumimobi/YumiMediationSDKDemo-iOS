@@ -108,6 +108,50 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             break;
     }
 }
+- (IBAction)clickSegmentControl:(UISegmentedControl *)sender {
+    
+    // reset button style
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+        {
+            [self.requestAdButton setTitle:@"Show banner" forState:UIControlStateNormal];
+            [self.showAdButton setTitle:@"Remove banner" forState:UIControlStateNormal];
+            self.removeBannerButton.hidden = YES;
+            self.adType = YumiMediationAdLogTypeBanner;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.showLogConsole.text = self.bannerAdLog;
+            });
+        }
+            break;
+        case 1:
+        {
+            [self.requestAdButton setTitle:@"Request interstitial" forState:UIControlStateNormal];
+            [self.showAdButton setTitle:@"Show interstitial" forState:UIControlStateNormal];
+            self.removeBannerButton.hidden = YES;
+            self.adType = YumiMediationAdLogTypeInterstitial;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.showLogConsole.text = self.interstitialAdLog;
+            });
+        }
+            break;
+        case 2:
+        {
+            [self.requestAdButton setTitle:@"Request video" forState:UIControlStateNormal];
+            [self.removeBannerButton setTitle:@"Check  video" forState:UIControlStateNormal];
+            [self.showAdButton setTitle:@"Play video" forState:UIControlStateNormal];
+              self.removeBannerButton.hidden = NO;
+            self.adType = YumiMediationAdLogTypeVideo;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.showLogConsole.text = self.videoAdLog;
+            });
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
 
 
 #pragma mark: getter

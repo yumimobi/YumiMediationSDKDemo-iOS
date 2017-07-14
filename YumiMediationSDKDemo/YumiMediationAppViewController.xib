@@ -183,6 +183,9 @@
                             <state key="normal" title="Clear">
                                 <color key="titleColor" red="1" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="clearLogOnTextView:" destination="-1" eventType="touchUpInside" id="0Yl-CT-8v0"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vN-kx-Me6">
                             <rect key="frame" x="164" y="5" width="66" height="30"/>
@@ -190,6 +193,9 @@
                             <state key="normal" title="Bottom">
                                 <color key="titleColor" red="0.19702787379713105" green="1" blue="0.3216195347016082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="showLogOnTextViewBottom:" destination="-1" eventType="touchUpInside" id="CJO-B5-WPs"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-uk-SQC">
                             <rect key="frame" x="86" y="5" width="66" height="30"/>
@@ -197,6 +203,9 @@
                             <state key="normal" title="Top">
                                 <color key="titleColor" red="0.32496776935380112" green="1" blue="0.038727309333632554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="showLogOnTextViewTop:" destination="-1" eventType="touchUpInside" id="dPH-x9-2gm"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>

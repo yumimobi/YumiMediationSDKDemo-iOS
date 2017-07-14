@@ -9,6 +9,7 @@
 #import "YumiMediationAppViewController.h"
 #import <YumiMediationSDK/YumiMediationBannerView.h>
 #import <YumiMediationSDK/YumiTest.h>
+#import <YumiMediationSDK/YumiMediationInterstitial.h>
 
 typedef NS_ENUM(NSUInteger ,YumiMediationAdLogType) {
     YumiMediationAdLogTypeBanner,
@@ -18,7 +19,7 @@ typedef NS_ENUM(NSUInteger ,YumiMediationAdLogType) {
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
-@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate>
+@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate , YumiMediationInterstitialDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *yumiMediationButton;
 @property (weak, nonatomic) IBOutlet UIButton *requestAdButton;
@@ -31,10 +32,13 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 @property (weak, nonatomic) IBOutlet UIButton *showLogTopButton;
 
 @property (nonatomic) YumiMediationBannerView  *bannerView;
+@property (nonatomic) YumiMediationInterstitial *interstitial;
+
 @property (nonatomic) NSString  *bannerAdLog;
 @property (nonatomic) NSString  *interstitialAdLog;
 @property (nonatomic) NSString  *videoAdLog;
 @property (nonatomic ,assign)YumiMediationAdLogType adType;
+@property (nonatomic ,assign) BOOL isSelectTest;
 
 @end
 
@@ -55,7 +59,11 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     // select test
-    [self implementTestFeature];
+    if (!self.isSelectTest) {
+        self.isSelectTest = YES;
+        [self implementTestFeature];
+    }
+    
 }
 
 #pragma mark: - private method
@@ -147,6 +155,14 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.view bringSubviewToFront:self.bannerView];
             
             break;
+            case 1:
+            [self showLogConsoleWith:[NSString stringWithFormat:@"initialize  interstitial ad yumiID : %@",yumiID] adLogType:YumiMediationAdLogTypeInterstitial];
+            self.interstitial = [[YumiMediationInterstitial alloc] initWithYumiID:yumiID
+                                                                        channelID:@""
+                                                                        versionID:@""
+                                                               rootViewController:self];
+            self.interstitial.delegate = self;
+            break;
             
         default:
             break;
@@ -161,7 +177,11 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
                 [self showLogConsoleWith:@"remove  banner ad" adLogType:YumiMediationAdLogTypeBanner];
         }
             break;
-            
+            case 1:
+            if ([self.interstitial isReady]) {
+                [self.interstitial present];
+            }
+            break;
         default:
             break;
     }
@@ -224,7 +244,6 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     [self clearLogConsole];
 }
 
-
 #pragma mark: getter
 - (YumiMediationBannerView *)bannerView{
     if (!_bannerView) {
@@ -240,11 +259,34 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 }
 
 - (void)yumiMediationBannerView:(YumiMediationBannerView *)adView didFailWithError:(YumiMediationError *)error{
-    [self showLogConsoleWith:[NSString stringWithFormat:@"banner view did fail ,error: %@", [error localizedDescription]] adLogType:YumiMediationAdLogTypeBanner];
+    [self showLogConsoleWith:[NSString stringWithFormat:@"banner view did fail with error: [ %@ ]", [error localizedDescription]] adLogType:YumiMediationAdLogTypeBanner];
 }
 
 - (void)yumiMediationBannerViewDidClick:(YumiMediationBannerView *)adView{
     [self showLogConsoleWith:@"banner view did click" adLogType:YumiMediationAdLogTypeBanner];
+}
+
+#pragma mark: - YumiMediationInterstitialDelegate
+
+- (void)yumiMediationInterstitialWillRequestAd:(YumiMediationInterstitial *)interstitial {
+    [self showLogConsoleWith:@"interstitial will request ad" adLogType:YumiMediationAdLogTypeInterstitial];
+}
+
+- (void)yumiMediationInterstitialDidReceiveAd:(YumiMediationInterstitial *)interstitial {
+    [self showLogConsoleWith:@"interstitial did receive ad" adLogType:YumiMediationAdLogTypeInterstitial];
+}
+
+- (void)yumiMediationInterstitial:(YumiMediationInterstitial *)interstitial
+                 didFailWithError:(YumiMediationError *)error {
+    [self showLogConsoleWith:[NSString stringWithFormat:@"interstitial did fial with error : [ %@ ] " ,[error localizedDescription]] adLogType:YumiMediationAdLogTypeInterstitial];
+}
+
+- (void)yumiMediationInterstitialwillDismissScreen:(YumiMediationInterstitial *)interstitial {
+    [self showLogConsoleWith:@"interstitial will dismiss screen" adLogType:YumiMediationAdLogTypeInterstitial];
+}
+
+- (void)yumiMediationInterstitialDidClick:(YumiMediationInterstitial *)interstitial {
+    [self showLogConsoleWith:@"interstitial did click " adLogType:YumiMediationAdLogTypeInterstitial];
 }
 
 @end

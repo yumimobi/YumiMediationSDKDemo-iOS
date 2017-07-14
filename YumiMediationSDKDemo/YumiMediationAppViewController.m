@@ -48,6 +48,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     self.interstitialAdLog = @"";
     self.videoAdLog = @"";
     
+    self.showLogConsole.editable = NO;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -207,6 +209,19 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             break;
     }
     
+}
+
+- (IBAction)showLogOnTextViewTop:(UIButton *)sender {
+    [self.showLogConsole scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+}
+
+- (IBAction)showLogOnTextViewBottom:(UIButton *)sender {
+    CGRect rect = CGRectMake(0, self.showLogConsole.contentSize.height -1, self.showLogConsole.frame.size.width, self.showLogConsole.contentSize.height);
+    [self.showLogConsole scrollRectToVisible:rect animated:NO];
+}
+
+- (IBAction)clearLogOnTextView:(UIButton *)sender {
+    [self clearLogConsole];
 }
 
 

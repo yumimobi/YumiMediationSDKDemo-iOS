@@ -22,8 +22,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
 @property (weak, nonatomic) IBOutlet UIButton *yumiMediationButton;
 @property (weak, nonatomic) IBOutlet UIButton *requestAdButton;
-@property (weak, nonatomic) IBOutlet UIButton *removeBannerButton;
-@property (weak, nonatomic) IBOutlet UIButton *showAdButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkVideoButton;
+@property (weak, nonatomic) IBOutlet UIButton *presentOrCloseAdButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *selectAdType;
 @property (weak, nonatomic) IBOutlet UITextView *showLogConsole;
 @property (weak, nonatomic) IBOutlet UIButton *clearLogButton;
@@ -150,7 +150,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             break;
     }
 }
-- (IBAction)clickRemoveBanner:(UIButton *)sender {
+- (IBAction)clickPresentOrCloseAdButton:(UIButton *)sender {
     switch (self.selectAdType.selectedSegmentIndex) {
         case 0:
             if (self.bannerView) {
@@ -171,8 +171,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
         case 0:
         {
             [self.requestAdButton setTitle:@"Show banner" forState:UIControlStateNormal];
-            [self.showAdButton setTitle:@"Remove banner" forState:UIControlStateNormal];
-            self.removeBannerButton.hidden = YES;
+            [self.presentOrCloseAdButton setTitle:@"Remove banner" forState:UIControlStateNormal];
+            self.checkVideoButton.hidden = YES;
             self.adType = YumiMediationAdLogTypeBanner;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.bannerAdLog;
@@ -182,8 +182,8 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
         case 1:
         {
             [self.requestAdButton setTitle:@"Request interstitial" forState:UIControlStateNormal];
-            [self.showAdButton setTitle:@"Show interstitial" forState:UIControlStateNormal];
-            self.removeBannerButton.hidden = YES;
+            [self.presentOrCloseAdButton setTitle:@"Show interstitial" forState:UIControlStateNormal];
+            self.checkVideoButton.hidden = YES;
             self.adType = YumiMediationAdLogTypeInterstitial;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.interstitialAdLog;
@@ -193,9 +193,9 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
         case 2:
         {
             [self.requestAdButton setTitle:@"Request video" forState:UIControlStateNormal];
-            [self.removeBannerButton setTitle:@"Check  video" forState:UIControlStateNormal];
-            [self.showAdButton setTitle:@"Play video" forState:UIControlStateNormal];
-              self.removeBannerButton.hidden = NO;
+            [self.checkVideoButton setTitle:@"Check  video" forState:UIControlStateNormal];
+            [self.presentOrCloseAdButton setTitle:@"Play video" forState:UIControlStateNormal];
+              self.checkVideoButton.hidden = NO;
             self.adType = YumiMediationAdLogTypeVideo;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.videoAdLog;

@@ -11,16 +11,18 @@
 #import <YumiMediationSDK/YumiTest.h>
 #import <YumiMediationSDK/YumiMediationInterstitial.h>
 #import <YumiMediationSDK/YumiMediationVideo.h>
+#import <YumiMediationSDK/YumiAdsSplash.h>
 
 typedef NS_ENUM(NSUInteger ,YumiMediationAdLogType) {
     YumiMediationAdLogTypeBanner,
     YumiMediationAdLogTypeInterstitial,
-    YumiMediationAdLogTypeVideo
+    YumiMediationAdLogTypeVideo,
+    YumiMediationAdLogTypeSplash,
 };
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
-@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate , YumiMediationInterstitialDelegate ,YumiMediationVideoDelegate>
+@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate , YumiMediationInterstitialDelegate ,YumiMediationVideoDelegate , YumiAdsSplashDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *yumiMediationButton;
 @property (weak, nonatomic) IBOutlet UIButton *requestAdButton;
@@ -34,10 +36,13 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
 @property (nonatomic) YumiMediationBannerView  *bannerView;
 @property (nonatomic) YumiMediationInterstitial *interstitial;
+@property (nonatomic) YumiAdsSplash *yumiSplash;
+@property (nonatomic) YumiMediationVideo *videoAdInstance ;
 
 @property (nonatomic) NSString  *bannerAdLog;
 @property (nonatomic) NSString  *interstitialAdLog;
 @property (nonatomic) NSString  *videoAdLog;
+@property (nonatomic) NSString  *splashAdLog;
 @property (nonatomic ,assign)YumiMediationAdLogType adType;
 @property (nonatomic ,assign) BOOL isSelectTest;
 
@@ -52,9 +57,9 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     self.bannerAdLog = @"";
     self.interstitialAdLog = @"";
     self.videoAdLog = @"";
+    self.splashAdLog = @"";
     
     self.showLogConsole.editable = NO;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -90,6 +95,10 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             self.videoAdLog =  [self.videoAdLog stringByAppendingString:formateLog];
             adLog = self.videoAdLog;
             break;
+        case YumiMediationAdLogTypeSplash:
+            self.splashAdLog =  [self.splashAdLog stringByAppendingString:formateLog];
+            adLog = self.splashAdLog;
+            break;
             
         default:
             break;
@@ -101,22 +110,22 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     dispatch_async(dispatch_get_main_queue(), ^{
         self.showLogConsole.text = adLog;
     });
-    
 }
 
 - (void)implementTestFeature {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择测试环境"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Select the test environment?"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+    [alert addAction:[UIAlertAction actionWithTitle:@"NO"
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *_Nonnull action){
                                             }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+    [alert addAction:[UIAlertAction actionWithTitle:@"YES"
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *_Nonnull action) {
                                                 [YumiTest enableTestMode];
                                             }]];
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -168,11 +177,17 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             case 2:
         {
             [self showLogConsoleWith:[NSString stringWithFormat:@"initialize  video ad yumiID : %@",yumiID] adLogType:YumiMediationAdLogTypeVideo];
-            YumiMediationVideo *videoAdInstance = [YumiMediationVideo sharedInstance] ;
-            [videoAdInstance loadAdWithYumiID:yumiID channelID:@"" versionID:@""];
-            videoAdInstance.delegate = self;
+             self.videoAdInstance= [YumiMediationVideo sharedInstance] ;
+            [self.videoAdInstance loadAdWithYumiID:yumiID channelID:@"" versionID:@""];
+            self.videoAdInstance.delegate = self;
         }
             break;
+            
+            case 3:
+            self.yumiSplash = [YumiAdsSplash sharedInstance];
+            [self.yumiSplash showYumiAdsSplashWith:yumiID rootViewController:self delegate:self];
+            break;
+            
         default:
             break;
     }
@@ -194,6 +209,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             case 2:
                 [[YumiMediationVideo sharedInstance] presentFromRootViewController:self];
             break;
+            
         default:
             break;
     }
@@ -207,6 +223,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.requestAdButton setTitle:@"Show banner" forState:UIControlStateNormal];
             [self.presentOrCloseAdButton setTitle:@"Remove banner" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = YES;
+            self.presentOrCloseAdButton.hidden = NO;
             self.adType = YumiMediationAdLogTypeBanner;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.bannerAdLog;
@@ -218,6 +235,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.requestAdButton setTitle:@"Request interstitial" forState:UIControlStateNormal];
             [self.presentOrCloseAdButton setTitle:@"Show interstitial" forState:UIControlStateNormal];
             self.checkVideoButton.hidden = YES;
+            self.presentOrCloseAdButton.hidden = NO;
             self.adType = YumiMediationAdLogTypeInterstitial;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.interstitialAdLog;
@@ -229,10 +247,23 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             [self.requestAdButton setTitle:@"Request video" forState:UIControlStateNormal];
             [self.checkVideoButton setTitle:@"Check  video" forState:UIControlStateNormal];
             [self.presentOrCloseAdButton setTitle:@"Play video" forState:UIControlStateNormal];
-              self.checkVideoButton.hidden = NO;
+            self.checkVideoButton.hidden = NO;
+            self.presentOrCloseAdButton.hidden = NO;
             self.adType = YumiMediationAdLogTypeVideo;
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.showLogConsole.text = self.videoAdLog;
+            });
+        }
+            break;
+            
+            case 3:
+        {
+            [self.requestAdButton setTitle:@"Request splash" forState:UIControlStateNormal];
+            self.checkVideoButton.hidden = YES;
+            self.presentOrCloseAdButton.hidden = YES;
+            self.adType = YumiMediationAdLogTypeSplash;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.showLogConsole.text = self.splashAdLog;
             });
         }
             break;
@@ -338,6 +369,25 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 - (void)yumiMediationVideoDidStartPlaying:(YumiMediationVideo *)video{
     [self showLogConsoleWith:@"video start playing " adLogType:YumiMediationAdLogTypeVideo];
 
+}
+
+#pragma mark : - YumiAdsSplashDelegate
+
+- (void)yumiAdsSplashDidLoad:(YumiAdsSplash *)splash {
+    [self showLogConsoleWith:@"splash did load " adLogType:YumiMediationAdLogTypeSplash];
+}
+- (void)yumiAdsSplash:(YumiAdsSplash *)splash DidFailToLoad:(NSError *)error {
+    [self showLogConsoleWith:[NSString stringWithFormat:@"splash did fail with error [ %@ ] " ,[error localizedDescription]]adLogType:YumiMediationAdLogTypeSplash];
+}
+- (void)yumiAdsSplashDidClicked:(YumiAdsSplash *)splash {
+    [self showLogConsoleWith:@"splash did clicked " adLogType:YumiMediationAdLogTypeSplash];
+}
+- (void)yumiAdsSplashDidClosed:(YumiAdsSplash *)splash {
+    [self showLogConsoleWith:@"splash did closed " adLogType:YumiMediationAdLogTypeSplash];
+}
+- (nullable UIImage *)yumiAdsSplashDefaultImage {
+    [self showLogConsoleWith:@"splash set default image is nil" adLogType:YumiMediationAdLogTypeSplash];
+    return nil;
 }
 
 @end

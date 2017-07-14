@@ -125,6 +125,7 @@
                                         <segment title="Banner"/>
                                         <segment title="Interstitial"/>
                                         <segment title="Video"/>
+                                        <segment title="Splash"/>
                                     </segments>
                                     <connections>
                                         <action selector="clickSegmentControl:" destination="-1" eventType="valueChanged" id="xXI-tW-tUv"/>

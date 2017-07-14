@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YumiMobiAppViewController">
             <connections>
                 <outlet property="view" destination="mMx-BE-UUi" id="h65-b3-QpF"/>
+                <outlet property="yumiMediationButton" destination="R2g-Lb-btE" id="anR-Cn-KhQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,6 +34,15 @@
                                         <constraint firstAttribute="width" constant="150" id="gPs-PG-zvi"/>
                                     </constraints>
                                     <state key="normal" title="点击聚合"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="clickMetation:" destination="-1" eventType="touchUpInside" id="Kwe-hP-W7Z"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>

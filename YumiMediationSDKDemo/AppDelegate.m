@@ -10,6 +10,7 @@
 #import <YumiMediationSDK/YumiAdsSplash.h>
 #import "YumiTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "YumiMobiAppViewController.h"
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
@@ -25,6 +26,7 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    /*
     self.window = [[UIWindow alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -40,6 +42,13 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
     
     self.yumiSplash = [YumiAdsSplash sharedInstance];
     [self.yumiSplash showYumiAdsSplashWith:yumiID rootViewController:navigationController delegate:self];
+*/
+    
+    
+    YumiMobiAppViewController *rootVc = [[YumiMobiAppViewController alloc] init];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    self.window.rootViewController = rootVc;
+    [self.window makeKeyWindow];
     
     return YES;
 }

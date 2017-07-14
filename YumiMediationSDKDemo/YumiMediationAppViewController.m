@@ -8,6 +8,7 @@
 
 #import "YumiMediationAppViewController.h"
 #import <YumiMediationSDK/YumiMediationBannerView.h>
+#import <YumiMediationSDK/YumiTest.h>
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
@@ -32,7 +33,14 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.allLog = @"";
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    // select test
+    [self implementTestFeature];
 }
 
 #pragma mark: - private method
@@ -49,6 +57,22 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
         self.showLogConsole.text = self.allLog;
     });
     
+}
+
+- (void)implementTestFeature {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择测试环境"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *_Nonnull action){
+                                            }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *_Nonnull action) {
+                                                [YumiTest enableTestMode];
+                                            }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)clickMetation:(UIButton *)sender {

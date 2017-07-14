@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YumiMobiAppViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YumiMediationAppViewController">
             <connections>
                 <outlet property="view" destination="mMx-BE-UUi" id="h65-b3-QpF"/>
                 <outlet property="yumiMediationButton" destination="R2g-Lb-btE" id="anR-Cn-KhQ"/>

@@ -1,5 +1,5 @@
 //
-//  YumiMobiAppViewController.h
+//  YumiMediationAppViewController.h
 //  YumiMediationSDKDemo
 //
 //  Created by ShunZhi Tang on 2017/7/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YumiMobiAppViewController : UIViewController
+@interface YumiMediationAppViewController : UIViewController
 
 @end

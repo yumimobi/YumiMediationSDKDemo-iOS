@@ -10,6 +10,7 @@
 #import <YumiMediationSDK/YumiMediationBannerView.h>
 #import <YumiMediationSDK/YumiTest.h>
 #import <YumiMediationSDK/YumiMediationInterstitial.h>
+#import <YumiMediationSDK/YumiMediationVideo.h>
 
 typedef NS_ENUM(NSUInteger ,YumiMediationAdLogType) {
     YumiMediationAdLogTypeBanner,
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSUInteger ,YumiMediationAdLogType) {
 
 static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
-@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate , YumiMediationInterstitialDelegate>
+@interface YumiMediationAppViewController () <YumiMediationBannerViewDelegate , YumiMediationInterstitialDelegate ,YumiMediationVideoDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *yumiMediationButton;
 @property (weak, nonatomic) IBOutlet UIButton *requestAdButton;
@@ -164,6 +165,14 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             self.interstitial.delegate = self;
             break;
             
+            case 2:
+        {
+            [self showLogConsoleWith:[NSString stringWithFormat:@"initialize  video ad yumiID : %@",yumiID] adLogType:YumiMediationAdLogTypeVideo];
+            YumiMediationVideo *videoAdInstance = [YumiMediationVideo sharedInstance] ;
+            [videoAdInstance loadAdWithYumiID:yumiID channelID:@"" versionID:@""];
+            videoAdInstance.delegate = self;
+        }
+            break;
         default:
             break;
     }
@@ -181,6 +190,9 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
             if ([self.interstitial isReady]) {
                 [self.interstitial present];
             }
+            break;
+            case 2:
+                [[YumiMediationVideo sharedInstance] presentFromRootViewController:self];
             break;
         default:
             break;
@@ -243,6 +255,27 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 - (IBAction)clearLogOnTextView:(UIButton *)sender {
     [self clearLogConsole];
 }
+- (IBAction)checkVideoIsReady:(UIButton *)sender {
+    UIAlertController *alert =
+    [UIAlertController alertControllerWithTitle:@"Check if the video is ready?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    if ([[YumiMediationVideo sharedInstance] isReady]) {
+        [alert addAction:[UIAlertAction actionWithTitle:@"Play video"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *_Nonnull action) {
+                                                    [[YumiMediationVideo sharedInstance]
+                                                     presentFromRootViewController:self];
+                                                }]];
+    }else{
+        [alert addAction:[UIAlertAction actionWithTitle:@"NO video"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *_Nonnull action){
+                                                
+                                            }]];
+    
+        }
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark: getter
 - (YumiMediationBannerView *)bannerView{
@@ -287,6 +320,24 @@ static NSString *const yumiID = @"3f521f0914fdf691bd23bf85a8fd3c3a";
 
 - (void)yumiMediationInterstitialDidClick:(YumiMediationInterstitial *)interstitial {
     [self showLogConsoleWith:@"interstitial did click " adLogType:YumiMediationAdLogTypeInterstitial];
+}
+
+#pragma mark - YumiMediationVideoDelegate
+- (void)yumiMediationVideoDidClose:(YumiMediationVideo *)video {
+    [self showLogConsoleWith:@"video did close " adLogType:YumiMediationAdLogTypeVideo];
+}
+
+- (void)yumiMediationVideoDidReward:(YumiMediationVideo *)video {
+    [self showLogConsoleWith:@"video did reward " adLogType:YumiMediationAdLogTypeVideo];
+}
+
+- (void)yumiMediationVideoDidOpen:(YumiMediationVideo *)video{
+    [self showLogConsoleWith:@"video did open " adLogType:YumiMediationAdLogTypeVideo];
+}
+
+- (void)yumiMediationVideoDidStartPlaying:(YumiMediationVideo *)video{
+    [self showLogConsoleWith:@"video start playing " adLogType:YumiMediationAdLogTypeVideo];
+
 }
 
 @end

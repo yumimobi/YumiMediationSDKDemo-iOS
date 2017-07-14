@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YumiMediationAppViewController">
             <connections>
+                <outlet property="checkVideoButton" destination="kLu-4I-Vh9" id="vaH-bF-XP4"/>
                 <outlet property="clearLogButton" destination="Nol-aU-AHe" id="Zfg-rX-By5"/>
-                <outlet property="removeBannerButton" destination="kLu-4I-Vh9" id="O27-Yw-r6C"/>
+                <outlet property="presentOrCloseAdButton" destination="o1b-gO-A5f" id="Jwc-pp-oL6"/>
                 <outlet property="requestAdButton" destination="xCB-Ge-5UR" id="uSA-wr-8gX"/>
                 <outlet property="selectAdType" destination="iJ3-dq-9tc" id="AyN-2S-PxD"/>
-                <outlet property="showAdButton" destination="o1b-gO-A5f" id="kEh-19-bXk"/>
                 <outlet property="showLogAtBottomButton" destination="6vN-kx-Me6" id="xUd-rU-YXk"/>
                 <outlet property="showLogConsole" destination="zbG-cg-jV4" id="Bki-9u-LNf"/>
                 <outlet property="showLogTopButton" destination="9ny-uk-SQC" id="BGf-SB-BbF"/>
@@ -78,15 +78,12 @@
                                         <action selector="clickRequestAd:" destination="-1" eventType="touchUpInside" id="r09-7L-Ucc"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLu-4I-Vh9">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLu-4I-Vh9">
                                     <rect key="frame" x="106.5" y="0.0" width="107" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="clickRemoveBanner:" destination="-1" eventType="touchUpInside" id="WJP-Oa-wYJ"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1b-gO-A5f">
                                     <rect key="frame" x="201" y="0.0" width="107" height="30"/>
@@ -94,6 +91,9 @@
                                     <state key="normal" title="Remove banner">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="clickPresentOrCloseAdButton:" destination="-1" eventType="touchUpInside" id="AnC-xG-AUe"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>

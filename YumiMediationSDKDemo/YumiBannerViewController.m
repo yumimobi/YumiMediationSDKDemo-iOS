@@ -40,7 +40,8 @@
 }
 
 - (IBAction)requestBanner:(id)sender {
-    [self.bannerView loadAd:YES];
+
+    [self.bannerView loadAd:NO];
     [self.view addSubview:self.bannerView];
 }
 

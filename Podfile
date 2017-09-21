@@ -1,14 +1,13 @@
-# Uncomment the next line to define a global platform for your project
- platform :ios, '7.0'
+ source "https://github.com/yumimobi/Specs.git"
+ source "https://github.com/CocoaPods/Specs"
+ platform :ios, '8.0'
 
 target 'YumiMediationSDKDemo' do
   # use_frameworks!
-
-    pod "YumiMediationDebugCenter-iOS"
-    pod "YumiMediationAdapters"
-    pod "YumiVideoAdsMediationAdapters"
-    #pod "YumiMediationAdapters", :subspecs => ['AdMob','InMobi','Chartboost','AppLovin','GDT','Unity','Baidu','Facebook']
-    #pod "YumiVideoAdsMediationAdapters", :subspecs => ['InMobi','Vungle','AdColony','AppLovin','Unity','Domob','Ironsource','AdMob']
+  
+    pod "YumiMediationAdapters", "3.0.1"
+    pod "YumiMediationSDK", "3.0.1"
+    pod "YumiMediationDebugCenter-iOS", "3.0.0"
 
   target 'YumiMediationSDKDemoTests' do
     inherit! :search_paths

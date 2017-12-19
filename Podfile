@@ -6,7 +6,7 @@ target 'YumiMediationSDKDemo' do
   
     pod "YumiMediationAdapters", “3.2.1”
     pod "YumiMediationSDK", “3.2.1”
-    pod "YumiMediationDebugCenter-iOS", “3.2.1”
+    pod "YumiMediationDebugCenter-iOS", “3.2.0”
 
   target 'YumiMediationSDKDemoTests' do
     inherit! :search_paths

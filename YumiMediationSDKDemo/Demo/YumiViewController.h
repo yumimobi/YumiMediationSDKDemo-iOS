@@ -7,14 +7,23 @@
 //
 
 @import UIKit;
-
-static NSString *const placementID = @"qlgld5td";
+#import "YumiCommonHeaderFile.h"
+/*
+ banner：k21ubzif
+ interstitial: s5j7jrrs
+ video：pwzcvso3
+ splash：pynlqi14
+ */
+static NSString *const placementID = @"pwzcvso3";
 static NSString *const channelID = @"";
-static NSString *const versionID = @"1.0";
+static NSString *const versionID = @"";
 
 @protocol YumiViewControllerDelegate <NSObject>
 
-- (void)modifyPlacementID:(NSString *)placementID channelID:(NSString *)channelID versionID:(NSString *)versionID;
+- (void)modifyPlacementID:(NSString *)placementID
+                channelID:(NSString *)channelID
+                versionID:(NSString *)versionID
+                   adType:(YumiAdType)adType;
 
 @end
 
@@ -22,5 +31,6 @@ static NSString *const versionID = @"1.0";
 
 @property (nonatomic, weak) id<YumiViewControllerDelegate> delegate;
 @property (nonatomic, assign, getter=isPresented) BOOL presented;
+@property (nonatomic, assign) YumiAdType adType;
 
 @end

@@ -123,16 +123,16 @@
 		5BD1768A2023FF4900D3389F /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				5BD1769C2023FF4900D3389F /* YumiMediationAppViewController.h */,
+				5BD176A02023FF4900D3389F /* YumiMediationAppViewController.m */,
+				5BD176992023FF4900D3389F /* YumiNativeView.h */,
+				5BD1769E2023FF4900D3389F /* YumiNativeView.m */,
+				5BD1769A2023FF4900D3389F /* YumiViewController.h */,
+				5BD1769F2023FF4900D3389F /* YumiViewController.m */,
+				5BD1769B2023FF4900D3389F /* native_back@2x.png */,
+				5BD1769D2023FF4900D3389F /* native_close@2x.png */,
 				5BD1768B2023FF4900D3389F /* YumiMediationAppViewController.xib */,
 				5BD1768C2023FF4900D3389F /* Tools */,
-				5BD176992023FF4900D3389F /* YumiNativeView.h */,
-				5BD1769A2023FF4900D3389F /* YumiViewController.h */,
-				5BD1769B2023FF4900D3389F /* native_back@2x.png */,
-				5BD1769C2023FF4900D3389F /* YumiMediationAppViewController.h */,
-				5BD1769D2023FF4900D3389F /* native_close@2x.png */,
-				5BD1769E2023FF4900D3389F /* YumiNativeView.m */,
-				5BD1769F2023FF4900D3389F /* YumiViewController.m */,
-				5BD176A02023FF4900D3389F /* YumiMediationAppViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";

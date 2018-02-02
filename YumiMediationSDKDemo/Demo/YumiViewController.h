@@ -9,12 +9,12 @@
 @import UIKit;
 #import "YumiCommonHeaderFile.h"
 /*
- banner：k21ubzif
- interstitial: s5j7jrrs
- video：pwzcvso3
+ banner：y6op8v69
+ interstitial: rz2wotpp
+ video：5x11o7l3
  splash：pynlqi14
  */
-static NSString *const placementID = @"pwzcvso3";
+static NSString *const placementID = @"5x11o7l3";
 static NSString *const channelID = @"";
 static NSString *const versionID = @"";
 

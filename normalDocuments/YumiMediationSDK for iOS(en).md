@@ -41,6 +41,9 @@
       * [Call debug mode](#call-debug-mode)   
       * [Sample](#sample)  
       * [TEST ID](#TEST-ID)
+      * [GDPR](#gdpr)
+         * [Set GDPR](#set-gdpr)
+         * [Networks informations](#networks-informations)
 
 # YumiMediationSDK iOS
 
@@ -287,18 +290,35 @@
 
   ```objective-c
   //implementing YumiMediationInterstitial Delegate
-  - (void)yumiMediationInterstitialDidReceiveAd:(YumiMediationInterstitial *)interstitial{
-      NSLog(@"interstitialDidReceiveAd");
+  /// Tells the delegate that the interstitial ad request succeeded.
+  - (void)yumiMediationInterstitialDidReceiveAd:(YumiMediationInterstitial *)interstitial {
+    NSLog(@"YumiMediationInterstitialDidReceiveAd");
   }
+  /// Tells the delegate that the interstitial ad failed to load.
   - (void)yumiMediationInterstitial:(YumiMediationInterstitial *)interstitial
-                   didFailWithError:(YumiMediationError *)error{
-      NSLog(@"interstitial:didFailToReceiveAdWithError: %@", error)
+             didFailToLoadWithError:(YumiMediationError *)error {
+    NSLog(@"YumiMediationInterstitialDidFailToLoadWithError: %@", [error localizedDescription]);
   }
-  - (void)yumiMediationInterstitialWillDismissScreen:(YumiMediationInterstitial *)interstitial{
-      NSLog(@"interstitialWillDismissScreen");
+  /// Tells the delegate that the interstitial ad failed to show.
+  - (void)yumiMediationInterstitial:(YumiMediationInterstitial *)interstitial
+             didFailToShowWithError:(YumiMediationError *)error {
+    NSLog(@"YumiMediationInterstitialDidFailToShowWithError: %@", [error localizedDescription]);
   }
-  - (void)yumiMediationInterstitialDidClick:(YumiMediationInterstitial *)interstitial{
-      NSLog(@"interstitialDidClick");
+  /// Tells the delegate that the interstitial ad opened.
+  - (void)yumiMediationInterstitialDidOpen:(YumiMediationInterstitial *)interstitial {
+    NSLog(@"YumiMediationInterstitialDidOpen);
+  }
+  /// Tells the delegate that the interstitial ad start playing.
+  - (void)yumiMediationInterstitialDidStartPlaying:(YumiMediationInterstitial *)interstitial {
+    NSLog(@"YumiMediationInterstitialDidStartPlaying);
+  }
+  /// Tells the delegate that the interstitial is to be animated off the screen.
+  - (void)yumiMediationInterstitialDidClosed:(YumiMediationInterstitial *)interstitial {
+    NSLog(@"YumiMediationInterstitialDidClosed);
+  }
+  /// Tells the delegate that the interstitial ad has been clicked.
+  - (void)yumiMediationInterstitialDidClick:(YumiMediationInterstitial *)interstitial {
+    NSLog(@"YumiMediationInterstitialDidClick);
   }
   ```
 
@@ -336,17 +356,38 @@
 - ##### Delegate implementation
 
   ```objective-c
-  - (void)yumiMediationVideoDidOpen:(YumiMediationVideo *)video{
-      NSLog(@"Opened reward video ad.");
+  /// Tells the delegate that the video ad was received.
+  - (void)yumiMediationVideoDidReceiveAd:(YumiMediationVideo *)video {
+      NSLog(@"YumiMediationVideoDidReceiveAd");
   }
-  - (void)yumiMediationVideoDidStartPlaying:(YumiMediationVideo *)video{
-      NSLog(@"Reward video ad started playing.");
+  /// Tells the delegate that the video ad failed to load.
+  - (void)yumiMediationVideo:(YumiMediationVideo *)video didFailToLoadWithError:(NSError *)error {
+      NSLog(@"YumiMediationVideoDidFailToLoadWithError:%@",[error localizedDescription]);
   }
-  - (void)yumiMediationVideoDidClose:(YumiMediationVideo *)video{
-      NSLog(@"Reward video ad is closed.");
+  /// Tells the delegate that the video ad failed to show.
+  - (void)yumiMediationVideo:(YumiMediationVideo *)video didFailToShowWithError:(NSError *)error {
+      NSLog(@"YumiMediationVideoDidFailToShowWithError:%@",[error localizedDescription]);
   }
-  - (void)yumiMediationVideoDidReward:(YumiMediationVideo *)video{
-      NSLog(@"is Reward");
+  /// Tells the delegate that the video ad opened.
+  - (void)yumiMediationVideoDidOpen:(YumiMediationVideo *)video {
+      NSLog(@"YumiMediationVideoDidOpen");
+  }
+  /// Tells the delegate that the video ad start playing.
+  - (void)yumiMediationVideoDidStartPlaying:(YumiMediationVideo *)video {
+      NSLog(@"YumiMediationVideoDidStartPlaying");
+  }
+  /// Tells the delegate that the video ad closed.
+  /// You can learn about the reward info by examining the ‘isRewarded’ value.
+  - (void)yumiMediationVideoDidClosed:(YumiMediationVideo *)video isRewarded:(BOOL)isRewarded {
+      NSLog(@"YumiMediationVideoDidClosedWithReward:%d",isRewarded);
+  }
+  /// Tells the delegate that the video ad has rewarded the user.
+  - (void)yumiMediationVideoDidReward:(YumiMediationVideo *)video {
+      NSLog(@"YumiMediationVideoDidReward");
+  }
+  /// Tells the delegate that the reward video ad has been clicked by the person.
+  - (void)yumiMediationVideoDidClick:(YumiMediationVideo *)video {
+      NSLog(@"YumiMediationVideoDidClick");
   }
   ```
 
@@ -678,3 +719,49 @@ select ad category, debug single platform
 | Rewarded Video         | 5xmpgti4                                                                                                                          | Using this test ID, you can get test ads which are from YUMI, AdMob, AdColony, AppLovin, IronSource, InMobi, Mintegral, Unity Ads, Vungle, ZPLAYAds                                         |
 | Native                 | atb3ke1i                                                                                                                          | You can get test ads which are from YUMI, AdMob, Baidu, GDTMob, Facebook by using this test ID                                                                              |
 | Splash                 | pwmf5r42                                                                                                                         | For now, Only YUMI platform returns test ads by use this test ID                                                                                                    |
+## GDPR
+This documentation is provided for compliance with the European Union's General Data Protection Regulation (GDPR). 
+If you are collecting consent from your users, you can make use of APIs discussed below to inform YumiMediationSDK and some downstream consumers of this information. 
+Get more information, please visit our official website.
+### Set GDPR
+
+```objective-c
+typedef enum : NSUInteger {
+    /// The user has granted consent for personalized ads.
+    YumiMediationConsentStatusPersonalized,
+    /// The user has granted consent for non-personalized ads.
+    YumiMediationConsentStatusNonPersonalized,
+    /// The user has neither granted nor declined consent for personalized or non-personalized ads.
+    YumiMediationConsentStatusUnknown,
+} YumiMediationConsentStatus;
+```
+
+```objective-c
+// Your user's consent. In this case, the user has given consent to store and process personal information.
+[[YumiMediationGDPRManager sharedGDPRManager] updateNetworksConsentStatus:YumiMediationConsentStatusPersonalized];
+```
+### Networks informations
+Statistics start at YumiMediationSDK 4.1.0.
+Get more informationm, please visit our official website
+
+| Ad Network | GDPR Support | Note |
+| :----: | :--------:| :--: |
+| Unity  | yes |   |
+| Admob  | yes |   |
+| Mintegral | yes |   |
+| Adcolony  | yes |   |
+| IronSource  | yes |   |
+| Inneractive | yes |   |
+| Chartboost | yes |   |
+| InMobi | yes |   |
+| IQzone | yes |   |
+| Yumi | yes |   |
+| AppLovin  | yes |   |
+| Baidu  | no |   |
+| Facebook | no | Get more information, please visit Facebook website. |
+| Domob  | no |   |
+| GDT | no |   |
+| Vungle | no | setting in Vungle dashboard |
+| OneWay | no |   |
+| BytedanceAds | no |   |
+| ZplayAds  | no |   |

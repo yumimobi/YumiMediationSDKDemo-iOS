@@ -263,7 +263,7 @@ protected void attachBaseContext(Context base) {
    > Failed to find Build Tools revision 29.0.0
    ```
 解决方法:
-从 [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle) 中删除 `buildToolsVersion '**BUILDTOOLS**'` 
+从 [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle) 中删除 `buildToolsVersion '**BUILDTOOLS**'` 
 
 ### 使用 Unity 插件接入 Android 应用时报错 "No toolchains found…" 如何处理？
 报错信息：
@@ -273,7 +273,7 @@ protected void attachBaseContext(Context base) {
    > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
    ```
 解决方法:
-修改 [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle) 中 gradle plugin 版本，如将 `classpath 'com.android.tools.build:gradle:3.0.1'` 修改为 `classpath 'com.android.tools.build:gradle:3.2.1'`。
+修改 [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle) 中 gradle plugin 版本，如将 `classpath 'com.android.tools.build:gradle:3.0.1'` 修改为 `classpath 'com.android.tools.build:gradle:3.2.1'`。
 
 ### 使用 Unity 插件接入 Android 应用时报错 "Failed to apply plugin…" 如何处理？
 报错信息：
@@ -288,7 +288,7 @@ protected void attachBaseContext(Context base) {
 - 降低 gradle plugin 版本。请按照以下步骤操作：
   （1） 根据错误信息中的 "Current version is…" 明确当前使用的 gradle 版本。以上述错误信息为例，当前的 gradle 版本为 4.2.1
   （2） 根据 [Update Gradle](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle) 文档，明确当前使用的 gradle 版本对应的 gradle plugin 版本。以上述错误信息为例，当前的 gradle 版本对应的 gradle plugin 版本为 3.0.0+
-  （3） 将 gradle plugin 版本降至上一步中查询到的 gradle plugin 版本。以上述错误信息为例，应将 [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle) 中 `classpath 'com.android.tools.build:gradle:x.x.x'` 修改为 `classpath 'com.android.tools.build:gradle:3.0.0+'`
+  （3） 将 gradle plugin 版本降至上一步中查询到的 gradle plugin 版本。以上述错误信息为例，应将 [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle) 中 `classpath 'com.android.tools.build:gradle:x.x.x'` 修改为 `classpath 'com.android.tools.build:gradle:3.0.0+'`
 
 
 ## 附录

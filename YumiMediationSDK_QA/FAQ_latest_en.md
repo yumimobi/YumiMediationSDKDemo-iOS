@@ -252,7 +252,7 @@ Error message:
    > Failed to find Build Tools revision 29.0.0
    ```
 Solution:
-Delete `buildToolsVersion '**BUILDTOOLS**'` from [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle)
+Delete `buildToolsVersion '**BUILDTOOLS**'` from [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle)
 
 ### What should I do if there's an error message tells "No toolchains found…" when integrating Android Unity plugin?
 Error message:
@@ -262,7 +262,7 @@ Error message:
    > No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
    ```
 Solution:
-Modify gradle plugin version in [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle). For example: Change `classpath 'com.android.tools.build:gradle:3.0.1'` to `classpath 'com.android.tools.build:gradle:3.2.1'`。
+Modify gradle plugin version in [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle). For example: Change `classpath 'com.android.tools.build:gradle:3.0.1'` to `classpath 'com.android.tools.build:gradle:3.2.1'`。
 
 ### What should I do if there's an error message tells "Failed to apply plugin…" when integrating Android Unity plugin?
 Error message:
@@ -277,7 +277,7 @@ Solution (any of below method will work):
 - Reduce the gradle plugin version. Please do as follows:
     (1) Identify the current gradle version according to the error message. Take the above message as an example, the current gradle version is 4.2.1;
     (2) Identify the corresponding gradle plugin version of your current gradle version through [Update Gradle](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle). Take the above message as an example, the corresponding gradle plugin version is 3.0.0+;
-    (3) Reduce the gradle plugin version to the version you identified in step (2). Take the above message as an example, the `classpath 'com.android.tools.build:gradle:x.x.x'` in the [mainTemplet](../../Assets/Plugins/Android/mainTemplate.gradle) should be changed to `classpath 'com.android.tools.build:gradle:3.0.0+'`. 
+    (3) Reduce the gradle plugin version to the version you identified in step (2). Take the above message as an example, the `classpath 'com.android.tools.build:gradle:x.x.x'` in the [mainTemplet](https://github.com/yumimobi/YumiMediationSDK-Unity/blob/master/Assets/Plugins/Android/mainTemplate.gradle) should be changed to `classpath 'com.android.tools.build:gradle:3.0.0+'`. 
 
 ## Appendix
 ### Network Test ID

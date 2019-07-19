@@ -342,7 +342,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 4. Native
 
 |Network|Key 1|Key 2|
-|-|-|-|-|
+|-|-|-|
 |AdMob|Ad Unit ID: ca-app-pub-3940256099942544/3986624511|
 |Baidu|App ID：ccb60059|adId: 2058621|
 |BytedanceAds|应用 ID：5000546|代码位 ID：900546910|
@@ -352,7 +352,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 5. Splash
 
 |Network|Key 1|Key 2|
-|-|-|-|-|
+|-|-|-|
 |Baidu|App ID：ccb60059|adId: 2058492|
 |BytedanceAds|应用 ID：5000546|代码位 ID：800546808|
 |GDTMob|APP ID: 1105344611|placement ID: 9040714184494018|
@@ -403,7 +403,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 4. Native
 
 |Network|Key 1|Key 2|
-|-|-|-|-|
+|-|-|-|
 |AdMob|Ad Unit ID: ca-app-pub-3940256099942544/2247696110|
 |Baidu|App ID：f0e4a343|adId: 6061450|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
@@ -412,6 +412,6 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 5. Splash
 
 |Network|Key 1|Key 2|
-|-|-|-|-|
+|-|-|-|
 |Baidu|App ID：e866cfb0|adId: 2058622|
 |GDTMob|APP ID: 1101152570|placement ID: 8863364436303842593|

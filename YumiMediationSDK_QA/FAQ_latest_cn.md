@@ -353,7 +353,7 @@ protected void attachBaseContext(Context base) {
 4. 原生
 
 |平台|参数一|参数二|
-|-|-|-|-|
+|-|-|-|
 |AdMob|广告单元 ID：ca-app-pub-3940256099942544/3986624511|
 |Baidu|应用 ID：ccb60059|代码位 ID：2058621|
 |穿山甲|应用 ID：5000546|代码位 ID：900546910|
@@ -363,7 +363,7 @@ protected void attachBaseContext(Context base) {
 5. 开屏
 
 |平台|参数一|参数二|
-|-|-|-|-|
+|-|-|-|
 |Baidu|应用 ID：ccb60059|代码位 ID：2058492|
 |穿山甲|应用 ID：5000546|代码位 ID：800546808|
 |GDTMob|媒体 ID：1105344611|广告位 ID：9040714184494018|
@@ -414,7 +414,7 @@ protected void attachBaseContext(Context base) {
 4. 原生
 
 |平台|参数一|参数二|
-|-|-|-|-|
+|-|-|-|
 |AdMob|广告单元 ID：ca-app-pub-3940256099942544/2247696110|
 |Baidu|应用 ID：f0e4a343|代码位 ID：6061450|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
@@ -423,6 +423,6 @@ protected void attachBaseContext(Context base) {
 5. 开屏
 
 |平台|参数一|参数二|
-|-|-|-|-|
+|-|-|-|
 |Baidu|应用 ID：e866cfb0|代码位 ID：2058622|
 |GDTMob|媒体 ID：1101152570|广告位 ID：8863364436303842593|

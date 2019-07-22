@@ -134,7 +134,7 @@ There may be several reasons for not seeing an ad. Please check in which OS you 
       ```
 
 ### I do not have requirements for data in channels and app versions dimension. What should I fill in these two parameters?
-It's OK to fill in an empty value if you do not have any requirement. If you want to compare your app's performance in different app versions, you can fill in the number of your app version. Take banner as an example: if you are going to launch your Popstar (5.1.0 version) in Huawei market, you can fill in banner.setChannelID("123") and banner.setVersionName("1.0.0"). 
+It's OK to fill in an empty value if you do not have any requirement. If you want to compare your app's performance in different app versions, you can fill in the number of your app version. Take banner as an example: if you are going to launch your Popstar (5.1.0 version) in Huawei market, you can fill in banner.setChannelID("huawei") and banner.setVersionName("5.1.0"). 
 
 ### Why some networks are disabled when I am testing? 
 To enable one network, you need to configure it in our Self-service Platform. 

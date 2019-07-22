@@ -145,7 +145,7 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
       ```
 
 ### 应用不需要区分渠道、版本，这两个参数如何填写？
-应用接入过程中不需要区分渠道、版本，接入过程中渠道版本直接填空即可；如需要区分不同渠道版本效果，可直接填写对应参数值；以banner为例：消灭星星510版本需要发版到华为渠道，可填写banner.setChannelID(123)；banner.setVersionName(510);
+应用接入过程中不需要区分渠道、版本，接入过程中渠道版本直接填空即可；如需要区分不同渠道版本效果，可直接填写对应参数值；以banner为例：消灭星星510版本需要发版到华为渠道，可填写banner.setChannelID("123")；banner.setVersionName("1.0.0");
 
 ### 为什么调试模式下，页面有些平台显示为灰色？
 在前台配置没有打开的平台，会在该页面显示为灰色。请到前台将该平台配置到这个广告位上。
@@ -176,8 +176,6 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
 
 ### 如何隐藏原生广告的广告标识？
 Yumi SDK 中提供了隐藏原生广告中的广告标识的接口，具体可见：[iOS 接入文档 - 原生广告选项](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(zh-cn).md#%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A%E9%80%89%E9%A1%B9-yumimediationnativeadconfiguration)及 [Android 接入文档 - 其他设置](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(zh-cn).md#354-%E5%85%B6%E5%AE%83%E8%AE%BE%E7%BD%AE)。
-
-目前，Unity 插件的接入没有隐藏原生广告标识的方法。
 
 ### 如何控制原生视频声音？
 由于三方 SDK 没有提供控制视频声音的接口，目前无法控制原生视频声音。

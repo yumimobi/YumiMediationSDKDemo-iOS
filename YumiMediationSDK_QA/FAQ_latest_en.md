@@ -87,23 +87,8 @@ There may be several reasons for not seeing an ad. Please check in which OS you 
   - Your app has not been approved. Your app will not get any ad response before it is approved. When you are testing, we recommend you use our test ID (Click to view [iOS test ID](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(en).md#TEST-ID), [Android test ID](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(en).md#52-test-ad-slot)) to test. 
   - If your app is approved and you want to test with your real Yumi ID, we can provide you other networks' test ID which is found in their test app. You can configure these IDs in our Self-service system. See more details in [Appendix - Network Test ID](#network-test-id)
 2. iOS integration checklist
-  - Please check your ATS setting. ATS (App Transport Security) proposed by WWDC 15 features an important method for Apple to boost network communication security. Non-HTTPS access will be banned by default for ios 9 and later.
-  As most of materials are provided by HTTP, please set as the followings to improve fillrate：
+  - Please check your ATS setting. ATS (App Transport Security) proposed by WWDC 15 features an important method for Apple to boost network communication security. Non-HTTPS access will be banned by default for ios 9 and later. About how to set correct ATS setting, Please see in [iOS integration guide - App Transport Security](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(en).md#app-transport-security). 
 
-    ```xml
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-      <key>NSAllowsArbitraryLoadsForMedia</key>
-      <true/>
-      <key>NSAllowsArbitraryLoadsInWebContent</key>
-      <true/>
-    </dict>
-    ```
-    ![ats_exceptions](imgs/ats_exceptions.png)
-
-    Note: The NSAllowsArbitraryLoads exception is required to make sure your ads are not impacted by ATS on iOS 9 devices, while NSAllowsArbitraryLoadsForMedia and NSAllowsArbitraryLoadsInWebContent are required to make sure your ads are not impacted by ATS on iOS 10 and later devices. For a further explanation about ATS, please refer to [Apple's Official Doc](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity).
 3. Android integration checklist
   - In Android 6.0 and higher versions (when the targetSdkVersion is 23 or higher), you need to add codes manually to request for user's permission. You can use the below method to check permissions and use a popup to request the user's permission.
     

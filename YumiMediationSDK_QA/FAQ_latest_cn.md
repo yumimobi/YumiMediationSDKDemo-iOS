@@ -94,27 +94,7 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
     - 保持 Facebook App 处于登录状态。如果填充仍然较差，您可以参考 [Facebook 测试文档](https://developers.facebook.com/docs/audience-network/testing)，开启测试模式。测试模式下，Facebook 有足量的填充。
 
 2. iOS 需核查的内容
-  - 请确认 ATS 的设置状态。WWDC 15 提出的 ATS (App Transport Security) 是 Apple 在推进网络通讯安全的一个重要方式。在 iOS 9 及以上版本中，默认非 HTTPS 的网络访问是被禁止的。
-  因为大部分广告物料以 HTTP 形式提供，为提高广告填充率，请进行以下设置：
-
-
-      
-    ```xml
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-      <key>NSAllowsArbitraryLoadsForMedia</key>
-      <true/>
-      <key>NSAllowsArbitraryLoadsInWebContent</key>
-      <true/>
-    </dict>                                                            
-    ```
-
-    ![ats_exceptions](imgs/ats_exceptions.png)
-
-    注：您需要添加 NSAllowsArbitraryLoads，以确保您的广告在 iOS 9 设备上不受 ATS 影响，同时需要添加 NSAllowsArbitraryLoadsForMedia 和 NSAllowsArbitraryLoadsInWebContent，以确保您的广告在 iOS 10 及更高版本的设备上不受 ATS 影响。关于 ATS 的详细解释和说明，请参考[苹果官方文档](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity)。
-
+  - 请确认 ATS 的设置状态。WWDC 15 提出的 ATS (App Transport Security) 是 Apple 在推进网络通讯安全的一个重要方式。在 iOS 9 及以上版本中，默认非 HTTPS 的网络访问是被禁止的。请参考[ iOS 接入文档- App Transport Security](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(zh-cn).md#app-transport-security) 进行设置。
 
 3. Android 需核查的内容
   - Android 6.0 及以上的系统（targetSdkVersion 为 23 或以上时）需要手动添加代码以获取用户授权。Yumi SDK 提供了以下方法进行权限检查并弹窗提醒用户授权：

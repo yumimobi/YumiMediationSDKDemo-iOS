@@ -128,7 +128,7 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
 应用接入过程中不需要区分渠道、版本，接入过程中渠道版本直接填空即可；如需要区分不同渠道版本效果，可直接填写对应参数值；以banner为例：消灭星星510版本需要发版到华为渠道，可填写banner.setChannelID("huawei")；banner.setVersionName("5.1.0");
 
 ### 为什么调试模式下，页面有些平台显示为灰色？
-在[开发者自助系统](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/)配置没有打开的平台，会在该页面显示为灰色。请将该平台配置到这个广告位上。
+在[开发者自助系统](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/)中配置没有打开的平台，会在该页面显示为灰色。请将该平台配置到这个广告位上。
   ![未配置该平台](imgs/020.png)
 
 ### 为什么调试模式下，部分平台未展示？

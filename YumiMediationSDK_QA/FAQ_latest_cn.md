@@ -15,7 +15,7 @@
         - [为什么我没有找到文档中所说的方法？](#为什么我没有找到文档中所说的方法)
         - [在应用更新时，是否需要将玉米聚合SDK更新到最新版本？](#在应用更新时是否需要将玉米聚合sdk更新到最新版本)
         - [为什么我请求不到广告/广告填充率太低？](#为什么我请求不到广告广告填充率太低)
-        - [应用不需要区分渠道、版本，这两个参数如何填写？](#应用不需要区分渠道版本这两个参数如何填写)
+        - [应用不需要区分渠道、版本，ChannelID 和 VersionName 参数如何填写？](#应用不需要区分渠道版本channelid-和-versionname-参数如何填写)
         - [为什么调试模式下，页面有些平台显示为灰色？](#为什么调试模式下页面有些平台显示为灰色)
         - [为什么调试模式下，部分平台未展示？](#为什么调试模式下部分平台未展示)
         - [启动崩溃且崩溃日志中有 AdMob 相关描述时，该如何处理？](#启动崩溃且崩溃日志中有-admob-相关描述时该如何处理)
@@ -25,7 +25,7 @@
         - [如何隐藏原生广告的广告标识？](#如何隐藏原生广告的广告标识)
         - [如何控制原生视频声音？](#如何控制原生视频声音)
         - [原生广告有留白问题如何处理？](#原生广告有留白问题如何处理)
-        - [为什么没有做任何操作，插屏自动展示了？](#为什么没有做任何操作插屏自动展示了)
+        - [为什么 Android 系统下，没有做任何操作，插屏自动展示了？](#为什么-android-系统下没有做任何操作插屏自动展示了)
         - [iOS 接入时，Firebase SDK 和 AdMob SDK 产生冲突时如何处理？](#ios-接入时firebase-sdk-和-admob-sdk-产生冲突时如何处理)
         - [Android 系统如何解决资源冲突问题？](#android-系统如何解决资源冲突问题)
         - [如何适配 Android 9.0 系统？](#如何适配-android-90-系统)
@@ -50,7 +50,7 @@
   ![待审核](imgs/pending.png)
 
 ### 如何暂停变现？
-[玉米前台](https://ssp.yumimobi.com/)提供广告位关闭功能，点击关闭按钮可以暂时关闭广告位，再次点击可以重新开启广告位；暂停广告位将直接影响到应用收入效果，请慎重操作。
+[开发者自助系统](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/)提供广告位关闭功能，点击关闭按钮可以暂时关闭广告位，再次点击可以重新开启广告位；暂停广告位将直接影响到应用收入效果，请慎重操作。
   ![暂停操作](imgs/007.png)
 
 ### 添加或修改配置时，为什么提示“广告位KEY已经被使用”？
@@ -68,7 +68,7 @@
 eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳定；CPC 的波动主要是由于广告竞争情况的变化引起，在不同时间段广告主投放预算会对大盘的 CPC 有所影响。如果某个时期大盘流量增长过快，可能会因为广告主竞价不充分而影响到 eCPM。
 
 ### 广告计费方式都有什么？
-目前，我们有 CPC(点击计费)和 CPM(千次广告展示计费)两种计费方式，以前者为主。
+目前，我们有 CPC(点击计费)和 CPM(千次广告展示计费)两种计费方式，以后者为主。
 
 ## SDK 接入相关
 ### 如何接入 SDK？
@@ -86,7 +86,7 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
 请求不到广告有多种原因，请明确您的问题出现在哪个操作系统，并参考以下信息进行排查：
 
 1. 普遍原因
-  - 包名不一致。请保证您在开发者自助系统中填写的包名和您应用中使用的包名一致，否则有可能请求不到广告。
+  - 包名不一致。请保证您在[开发者自助系统](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/)中填写的包名和您应用中使用的包名一致，否则有可能请求不到广告。
   - 您的应用未审核通过。未审核通过的应用，无法请求到广告。您在调试过程中可以使用我们的测试 ID 进行测试。点击查看：[iOS 测试 ID](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(zh-cn).md#test-id)、[Android 测试 ID](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(zh-cn).md#52-%E6%B5%8B%E8%AF%95%E5%B9%BF%E5%91%8A%E4%BD%8D)
   - 如果您的应用已审核通过，并且您想使用正式的广告位 ID 进行测试，但没有广告填充，您可以使用三方平台的测试应用中提供的测试 ID，具体见[附录-三方平台测试 ID](#三方平台测试-id)；
   - 请注意 Facebook 在中国大陆填充较差，在中国大陆调试 Facebook 广告时，您需要：
@@ -124,11 +124,11 @@ eCPM 的波动由 CTR 和 CPC 决定，大多数情况下，CTR 基本保持稳�
       <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
       ```
 
-### 应用不需要区分渠道、版本，这两个参数如何填写？
+### 应用不需要区分渠道、版本，ChannelID 和 VersionName 参数如何填写？
 应用接入过程中不需要区分渠道、版本，接入过程中渠道版本直接填空即可；如需要区分不同渠道版本效果，可直接填写对应参数值；以banner为例：消灭星星510版本需要发版到华为渠道，可填写banner.setChannelID("huawei")；banner.setVersionName("5.1.0");
 
 ### 为什么调试模式下，页面有些平台显示为灰色？
-在前台配置没有打开的平台，会在该页面显示为灰色。请到前台将该平台配置到这个广告位上。
+在[开发者自助系统](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/)配置没有打开的平台，会在该页面显示为灰色。请将该平台配置到这个广告位上。
   ![未配置该平台](imgs/020.png)
 
 ### 为什么调试模式下，部分平台未展示？
@@ -163,6 +163,7 @@ Yumi SDK 中提供了隐藏原生广告中的广告标识的接口，具体可�
 
 ### 原生广告有留白问题如何处理？
 如果希望您收到的物料填满 View，可通过以下方法：
+
 iOS: 
 ```objective-c
 imageView.contentMode = UIViewContentModeScaleToFill;
@@ -174,7 +175,7 @@ imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
 如果使用该方法后，物料产生了拉伸，请通过 global@yumimobi.com 联系我们，请在邮件中说明您的广告位ID及请求时的尺寸。我们将调整并下发合适的物料。
 
-### 为什么没有做任何操作，插屏自动展示了？
+### 为什么 Android 系统下，没有做任何操作，插屏自动展示了？
 showInterstitial(false) 方法中的参数代表了是否自动展示，如果填 true，则在插屏广告准备完成后就会自动展示。如果不希望插屏自动展示，请将该参数设置为 false。详情请参考文档[展现插屏广告](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(zh-cn).md#322-%E5%B1%95%E7%A4%BA%E5%8F%8A%E9%94%80%E6%AF%81)相关内容。
 
 ### iOS 接入时，Firebase SDK 和 AdMob SDK 产生冲突时如何处理？
@@ -271,14 +272,13 @@ protected void attachBaseContext(Context base) {
 
 ## 附录
 ### 三方平台测试 ID
-如果您在调试过程中，使用正式的三方平台 ID 没有填充，可以使用以下三方平台的测试 ID 进行配置。这些测试 ID 是三方平台的测试应用中提供的测试 ID，如果该 ID 没有广告填充，可以联系三方平台。请注意：同一个三方广告平台的测试广告位 KEY 仅能配置到一个应用上。请明确您希望调试哪个应用，并避免在其他应用下配置相同的测试广告位 KEY。
+如果您在调试过程中，使用正式的三方平台 ID 没有填充，可以使用以下三方平台的测试 ID 进行配置。这些测试 ID 是三方平台的测试 Demo 中提供的测试 ID，如果该 ID 没有广告填充，可以联系三方平台。请注意：同一个三方广告平台的测试广告位 KEY 仅能配置到一个应用上。请明确您希望调试哪个应用，并避免在其他应用下配置相同的测试广告位 KEY。
 #### iOS 测试 ID
 1. Banner
 
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/2934735716|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: b7d2933ac89551e7|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|应用 ID：ccb60059|代码位 ID：3722589||
 |穿山甲|应用 ID：5000546|代码位 ID：900546859||
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|||
@@ -292,8 +292,7 @@ protected void attachBaseContext(Context base) {
 
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/4411468910|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: af5ec29b481807d5|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|应用 ID：ccb60059|代码位 ID：2058554||
 |穿山甲|应用 ID：5000546|代码位 ID：900546941||
 |Chartboost|应用 ID：5b9b2c8d61c3570e1974a657|应用签名：43b4fcee44c0ca91b13ca2724fb0df124377248f||
@@ -313,8 +312,7 @@ protected void attachBaseContext(Context base) {
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
 |AdColony|App ID: app9c683ac44fc741ba8d|Zone ID: vzac85989e4a1049d5ba||
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/1712485313|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: af5ec29b481807d5|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|应用 ID：ccb60059|代码位 ID：5889473||
 |穿山甲|应用 ID：5000546|代码位 ID：900546826||
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|||
@@ -332,7 +330,7 @@ protected void attachBaseContext(Context base) {
 
 |平台|参数一|参数二|
 |-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/3986624511|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/ios/test-ads)|
 |Baidu|应用 ID：ccb60059|代码位 ID：2058621|
 |穿山甲|应用 ID：5000546|代码位 ID：900546910|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
@@ -351,8 +349,7 @@ protected void attachBaseContext(Context base) {
 
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/6300978111|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: 7acaf00549217f57|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|应用 ID：e866cfb0|代码位 ID：2015351||
 |GDTMob|媒体 ID：1101152570|广告位 ID：4080052898050840||
 |IQzone|Placement ID: UkJ1RVVoQmxOQkdub0RaWFFoVjVYNTRHRHVEQlJycWVacEZBQnppbitZdzEwcThY|||
@@ -362,8 +359,7 @@ protected void attachBaseContext(Context base) {
 
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/1033173712|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: ace47a211db60b14|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|应用 ID：e866cfb0|代码位 ID：2403633||
 |GDTMob|媒体 ID：1101152570|广告位 ID：3040652898151811||
 |IronSource|App Key: 7885d465|Instance Id: 0||
@@ -378,8 +374,7 @@ protected void attachBaseContext(Context base) {
 |平台|参数一|参数二|参数三|
 |-|-|-|-|
 |AdColony|App ID: appdf48548d294448cab5|Zone ID: vz983a8c6ac1b64ea396|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/5224354917|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: b6101ab432241113|Zone: 1|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|应用 ID：e866cfb0|代码位 ID：5925490||
 |GDTMob|媒体 ID：1101152570|广告位 ID：5040942242835423||
 |IronSource|App Key: 7885d465|Instance Id: 0||
@@ -393,7 +388,7 @@ protected void attachBaseContext(Context base) {
 
 |平台|参数一|参数二|
 |-|-|-|
-|AdMob|广告单元 ID：ca-app-pub-3940256099942544/2247696110|
+|AdMob|详情查看 [AdMob 测试广告](https://developers.google.com/admob/android/test-ads)|
 |Baidu|应用 ID：f0e4a343|代码位 ID：6061450|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
 |GDTMob|媒体 ID：1101152570|广告位 ID：6040749702835933|

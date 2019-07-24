@@ -15,7 +15,7 @@
         - [Why can't I find the method in the integration guide?](#why-cant-i-find-the-method-in-the-integration-guide)
         - [Do I need to update the YumiMediationSDK when I update my app?](#do-i-need-to-update-the-yumimediationsdk-when-i-update-my-app)
         - [Why don't I see any ads / Why is the ad fill rate so low?](#why-dont-i-see-any-ads--why-is-the-ad-fill-rate-so-low)
-        - [I do not have requirements for data in channels and app versions dimension. What should I fill in these two parameters?](#i-do-not-have-requirements-for-data-in-channels-and-app-versions-dimension-what-should-i-fill-in-these-two-parameters)
+        - [I do not have requirements for data in channels and app versions dimension. What should I fill in the ChannelID and VersionName?](#i-do-not-have-requirements-for-data-in-channels-and-app-versions-dimension-what-should-i-fill-in-the-channelid-and-versionname)
         - [Why some networks are disabled when I am testing?](#why-some-networks-are-disabled-when-i-am-testing)
         - [Why I can not see some of the networks when I am testing?](#why-i-can-not-see-some-of-the-networks-when-i-am-testing)
         - [I meet a crash after starting the app and the crash log has Admob-related descriptions. What should I do?](#i-meet-a-crash-after-starting-the-app-and-the-crash-log-has-admob-related-descriptions-what-should-i-do)
@@ -25,7 +25,7 @@
         - [How to hide the ad logo in the native ad?](#how-to-hide-the-ad-logo-in-the-native-ad)
         - [How to control the sound of the native ad?](#how-to-control-the-sound-of-the-native-ad)
         - [What should I do if the material does not fill the view fully?](#what-should-i-do-if-the-material-does-not-fill-the-view-fully)
-        - [Why the interstitial shows automatically without any action?](#why-the-interstitial-shows-automatically-without-any-action)
+        - [Why the interstitial shows automatically in Android device without any action?](#why-the-interstitial-shows-automatically-in-android-device-without-any-action)
         - [How to deal with the conflict between Firebase SDK and AdMob SDK when integrating iOS SDK?](#how-to-deal-with-the-conflict-between-firebase-sdk-and-admob-sdk-when-integrating-ios-sdk)
         - [How to deal with resource conflict issue in Android system?](#how-to-deal-with-resource-conflict-issue-in-android-system)
         - [How to adapt to Android 9.0?](#how-to-adapt-to-android-90)
@@ -49,7 +49,7 @@ You can not test your app until it passes the review, but you can use test ID (C
   ![pending](imgs/pending_en.png)
 
 ### How to pause monetization? 
-We provide status control of placements in our [Self-service System](https://ssp.yumimobi.com/). To pause your placements' monetization, you need to switch off the status button in the Placements List. Please be noted that pausing the placement will affect your incomes immediately, so it is necessary to consider carefully before doing this.
+We provide status control of placements in our [Self-service System](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/). To pause your placements' monetization, you need to switch off the status button in the Placements List. Please be noted that pausing the placement will affect your incomes immediately, so it is necessary to consider carefully before doing this.
   ![pause](imgs/adPlacements_en.png)
 
 ### Why there's a popup saying "The ad bit KEY has been used" when I am adding or modifying a configuration? 
@@ -68,7 +68,7 @@ Occasionally, there will be a delay in updating data. It's very kind of you to w
 The fluctuation of eCPM is determined by CTR and CPC. In most cases, CTR is basically stable; the fluctuation of CPC is mainly caused by the change in advertising competition. Advertiser's budget will affect the CPC of the market in different periods. If the traffic growth of the market is too fast during a certain period, it may affect eCPM because advertiser's bids are insufficient.
 
 ### What charging method do you use?
-For now, we have CPC (cost per click) and CPM (cost per mille); the CPC is the main charging method. 
+For now, we have CPC (cost per click) and CPM (cost per mille); the CPM is the main charging method. 
 
 ## SDK Integration
 ### How to integrate your SDK?
@@ -83,9 +83,9 @@ To ensure your revenue, we recommend you to update the YumiMediationSDK each tim
 ### Why don't I see any ads / Why is the ad fill rate so low?
 There may be several reasons for not seeing an ad. Please check in which OS you meet the issue and troubleshoot it with below information.
 1. General reasons
-  - The package name is not the same. Please make sure that the package name you fill in our Self-service System is the same with your app's package name. Otherwise, you may not see the ads. 
+  - The package name is not the same. Please make sure that the package name you fill in our [Self-service System](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/) is the same with your app's package name. Otherwise, you may not see the ads. 
   - Your app has not been approved. Your app will not get any ad response before it is approved. When you are testing, we recommend you use our test ID (Click to view [iOS test ID](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(en).md#TEST-ID), [Android test ID](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(en).md#52-test-ad-slot)) to test. 
-  - If your app is approved and you want to test with your real Yumi ID, we can provide you other networks' test ID which is found in their test app. You can configure these IDs in our Self-service system. See more details in [Appendix - Network Test ID](#network-test-id)
+  - If your app is approved and you want to test with your real Yumi ID, we can provide you other networks' test ID which is found in their test app. You can configure these IDs in our [Self-service system](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/). See more details in [Appendix - Network Test ID](#network-test-id)
 2. iOS integration checklist
   - Please check your ATS setting. ATS (App Transport Security) proposed by WWDC 15 features an important method for Apple to boost network communication security. Non-HTTPS access will be banned by default for ios 9 and later. About how to set correct ATS setting, Please see in [iOS integration guide - App Transport Security](https://github.com/yumimobi/YumiMediationSDKDemo-iOS/blob/master/normalDocuments/YumiMediationSDK%20for%20iOS(en).md#app-transport-security). 
 
@@ -118,11 +118,11 @@ There may be several reasons for not seeing an ad. Please check in which OS you 
       <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
       ```
 
-### I do not have requirements for data in channels and app versions dimension. What should I fill in these two parameters?
+### I do not have requirements for data in channels and app versions dimension. What should I fill in the ChannelID and VersionName?
 It's OK to fill in an empty value if you do not have any requirement. If you want to compare your app's performance in different app versions, you can fill in the number of your app version. Take banner as an example: if you are going to launch your Popstar (5.1.0 version) in Huawei market, you can fill in banner.setChannelID("huawei") and banner.setVersionName("5.1.0"). 
 
 ### Why some networks are disabled when I am testing? 
-To enable one network, you need to configure it in our Self-service Platform. 
+To enable one network, you need to configure it in our [Self-service System](https://ssp.yumimobi.com/?&oauth=dev_oauth#/app/appList/). 
   ![not configured](imgs/020.png)
 
 ### Why I can not see some of the networks when I am testing? 
@@ -155,6 +155,7 @@ There's no method to control the sound of native ad because other networks do no
 
 ### What should I do if the material does not fill the view fully? 
 You can make the material fully fill  the view through the below method:
+
 iOS: 
 ```objective-c
 imageView.contentMode = UIViewContentModeScaleToFill;
@@ -165,7 +166,7 @@ imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 ```
 If the material streched after using this method, please contact us at global@yumimobi.com with slot id and request size. We will adjust the ad response for you. 
 
-### Why the interstitial shows automatically without any action? 
+### Why the interstitial shows automatically in Android device without any action? 
 
 The parameter of showInterstitial(false) controls the auto-display of interstitial. If the parameter is true, the interstitial will auto display once it finishes loading. If you do not intend to auto display interstitial, please set the parameter false. For more information, see [Display and Destroy](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(en).md#322-display-and-destroy).
 
@@ -271,8 +272,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/2934735716|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: b7d2933ac89551e7|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|App ID：ccb60059|adId: 3722589||
 |BytedanceAds|应用 ID：5000546|代码位 ID：900546859||
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|||
@@ -286,8 +286,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/4411468910|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: af5ec29b481807d5|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|App ID：ccb60059|adId: 2058554||
 |BytedanceAds|应用 ID：5000546|代码位 ID：900546941||
 |Chartboost|APP ID: 5b9b2c8d61c3570e1974a657|App Signature: 43b4fcee44c0ca91b13ca2724fb0df124377248f||
@@ -307,8 +306,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
 |AdColony|App ID: app9c683ac44fc741ba8d|Zone ID: vzac85989e4a1049d5ba||
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/1712485313|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: af5ec29b481807d5|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/ios/test-ads)|||
 |Baidu|App ID：ccb60059|adId: 5889473||
 |BytedanceAds|应用 ID：5000546|代码位 ID：900546826||
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|||
@@ -326,7 +324,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|
 |-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/3986624511|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/ios/test-ads)|
 |Baidu|App ID：ccb60059|adId: 2058621|
 |BytedanceAds|应用 ID：5000546|代码位 ID：900546910|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
@@ -345,8 +343,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/6300978111|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: 7acaf00549217f57|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|App ID：e866cfb0|adId: 2015351||
 |GDTMob|APP ID: 1101152570|placement ID: 4080052898050840||
 |IQzone|Placement ID: UkJ1RVVoQmxOQkdub0RaWFFoVjVYNTRHRHVEQlJycWVacEZBQnppbitZdzEwcThY|||
@@ -356,8 +353,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/1033173712|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: ace47a211db60b14|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|App ID：e866cfb0|adId: 2403633||
 |GDTMob|APP ID: 1101152570|placement ID: 3040652898151811||
 |IronSource|App Key: 7885d465|Instance Id: 0||
@@ -372,8 +368,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 |Network|Key 1|Key 2|Key 3|
 |-|-|-|-|
 |AdColony|App ID: appdf48548d294448cab5|Zone ID: vz983a8c6ac1b64ea396|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/5224354917|||
-|Applovin|SDK Key: qx1n7X8i53FgIANTP6L6vRD5KlRgJCW87XvF41y94CrNMDsnJBuDd6Jyrlc9x8H3fAJlCGuHSkfqxVaFgTSIZn|Zone Id: b6101ab432241113|Zone: 1|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/android/test-ads)|||
 |Baidu|App ID：e866cfb0|adId: 5925490||
 |GDTMob|APP ID: 1101152570|placement ID: 5040942242835423||
 |IronSource|App Key: 7885d465|Instance Id: 0||
@@ -387,7 +382,7 @@ If there's no ad fill with your real networks' ID, we provide below test IDs whi
 
 |Network|Key 1|Key 2|
 |-|-|-|
-|AdMob|Ad Unit ID: ca-app-pub-3940256099942544/2247696110|
+|AdMob|For details, see in [AdMob Test Ad](https://developers.google.com/admob/android/test-ads)|
 |Baidu|App ID：f0e4a343|adId: 6061450|
 |Facebook|Placement ID: YOUR_PLACEMENT_ID|
 |GDTMob|APP ID: 1101152570|placement ID: 6040749702835933|

@@ -25,8 +25,8 @@
         - [How to hide the ad logo in the native ad?](#how-to-hide-the-ad-logo-in-the-native-ad)
         - [How to control the sound of the native ad?](#how-to-control-the-sound-of-the-native-ad)
         - [What should I do if the material does not fill the view fully?](#what-should-i-do-if-the-material-does-not-fill-the-view-fully)
-        - [Why the interstitial shows automatically in Android device without any action?](#why-the-interstitial-shows-automatically-in-android-device-without-any-action)
         - [How to deal with the conflict between Firebase SDK and AdMob SDK when integrating iOS SDK?](#how-to-deal-with-the-conflict-between-firebase-sdk-and-admob-sdk-when-integrating-ios-sdk)
+        - [Why the interstitial shows automatically in Android device without any action?](#why-the-interstitial-shows-automatically-in-android-device-without-any-action)
         - [How to deal with resource conflict issue in Android system?](#how-to-deal-with-resource-conflict-issue-in-android-system)
         - [How to adapt to Android 9.0?](#how-to-adapt-to-android-90)
         - [I'm integrating native ads of GDTMob by Android Studio. Why doesn't the video show?](#im-integrating-native-ads-of-gdtmob-by-android-studio-why-doesnt-the-video-show)
@@ -166,10 +166,6 @@ imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 ```
 If the material streched after using this method, please contact us at global@yumimobi.com with slot id and request size. We will adjust the ad response for you. 
 
-### Why the interstitial shows automatically in Android device without any action? 
-
-The parameter of showInterstitial(false) controls the auto-display of interstitial. If the parameter is true, the interstitial will auto display once it finishes loading. If you do not intend to auto display interstitial, please set the parameter false. For more information, see [Display and Destroy](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(en).md#322-display-and-destroy).
-
 ### How to deal with the conflict between Firebase SDK and AdMob SDK when integrating iOS SDK?
 The conflict is caused by repeated codes of Firebase SDK and AdMob SDK. To solve this issue, please integrate AdMob SDK manually. The steps are as follows:
 1. Delete AdMob network in `YumiMediationAdapters`
@@ -185,6 +181,10 @@ The conflict is caused by repeated codes of Firebase SDK and AdMob SDK. To solve
     (2) Input Resources and YumiMediationAdMob.framework to Xcode project (do not input other files).
 
    ![image](imgs/0011.png)
+
+### Why the interstitial shows automatically in Android device without any action? 
+
+The parameter of showInterstitial(false) controls the auto-display of interstitial. If the parameter is true, the interstitial will auto display once it finishes loading. If you do not intend to auto display interstitial, please set the parameter false. For more information, see [Display and Destroy](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(en).md#322-display-and-destroy).
 
 ### How to deal with resource conflict issue in Android system?
 

@@ -25,8 +25,8 @@
         - [如何隐藏原生广告的广告标识？](#如何隐藏原生广告的广告标识)
         - [如何控制原生视频声音？](#如何控制原生视频声音)
         - [原生广告有留白问题如何处理？](#原生广告有留白问题如何处理)
-        - [为什么 Android 系统下，没有做任何操作，插屏自动展示了？](#为什么-android-系统下没有做任何操作插屏自动展示了)
         - [iOS 接入时，Firebase SDK 和 AdMob SDK 产生冲突时如何处理？](#ios-接入时firebase-sdk-和-admob-sdk-产生冲突时如何处理)
+        - [为什么 Android 系统下，没有做任何操作，插屏自动展示了？](#为什么-android-系统下没有做任何操作插屏自动展示了)
         - [Android 系统如何解决资源冲突问题？](#android-系统如何解决资源冲突问题)
         - [如何适配 Android 9.0 系统？](#如何适配-android-90-系统)
         - [GDT (广点通)平台使用 Android Studio 接入原生广告，为什么原生视频广告不显示？](#gdt-广点通平台使用-android-studio-接入原生广告为什么原生视频广告不显示)
@@ -175,9 +175,6 @@ imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
 如果使用该方法后，物料产生了拉伸，请通过 global@yumimobi.com 联系我们，请在邮件中说明您的广告位ID及请求时的尺寸。我们将调整并下发合适的物料。
 
-### 为什么 Android 系统下，没有做任何操作，插屏自动展示了？
-showInterstitial(false) 方法中的参数代表了是否自动展示，如果填 true，则在插屏广告准备完成后就会自动展示。如果不希望插屏自动展示，请将该参数设置为 false。详情请参考文档[展现插屏广告](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(zh-cn).md#322-%E5%B1%95%E7%A4%BA%E5%8F%8A%E9%94%80%E6%AF%81)相关内容。
-
 ### iOS 接入时，Firebase SDK 和 AdMob SDK 产生冲突时如何处理？
 由于 Firebase SDK 中的文件和 AdMob 广告 SDK 代码重复造成冲突，请通过手动的方式接入 AdMob 平台。具体步骤如下：
 1. 在 `YumiMediationAdapters`  中删除 AdMob 平台
@@ -194,6 +191,10 @@ showInterstitial(false) 方法中的参数代表了是否自动展示，如果�
    （2）将 Resources 和 YumiMediationAdMob.framework 导入 Xcode 工程 （无需导入其他文件）
    
    ![image](imgs/0011.png)
+
+### 为什么 Android 系统下，没有做任何操作，插屏自动展示了？
+showInterstitial(false) 方法中的参数代表了是否自动展示，如果填 true，则在插屏广告准备完成后就会自动展示。如果不希望插屏自动展示，请将该参数设置为 false。详情请参考文档[展现插屏广告](https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20for%20Android(zh-cn).md#322-%E5%B1%95%E7%A4%BA%E5%8F%8A%E9%94%80%E6%AF%81)相关内容。
+
 
 ### Android 系统如何解决资源冲突问题？
 1. 查看控制台输出错误日志，查看出现冲突的资源；
